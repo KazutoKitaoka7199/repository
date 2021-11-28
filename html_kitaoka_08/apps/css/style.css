@@ -1,0 +1,376 @@
+/* ここから下に記載していく */
+@charset "utf-8";
+html{
+    max-width: 1200px;
+    font-size:100%;
+    margin: auto;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+h2{
+    font-size: 150%;
+    font-weight: bold;
+    color: green;
+    margin: 60px 0px 30px 0px;
+}
+
+h3{
+    font-weight: bold;
+    font-size: 18px;
+    margin: 0 0 40px 0;
+}
+
+a{
+    text-decoration:none;
+}
+
+li{
+    list-style: none;
+    padding-left: 0;
+}
+
+.text-center{
+    text-align: center;
+}
+
+/*------------------
+        header
+----------------------*/
+
+.header-wrapper{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 121px;
+}
+
+.header-wrapper>img{
+    height: 80px;
+}
+
+.list{
+    display: flex;
+    font-size: 21px;
+    font-weight: bold;
+}
+
+.list-item{
+    margin: 0 50px 0 0;
+}
+
+.list-item>a{
+    color: black;
+}
+
+/*site-title*/
+.site-title{
+    font-size: 32px;
+    color: white;
+    font-weight: bold;
+}
+
+.sub-title{
+    font-size: 24px;
+    color: white;
+    font-weight: bold;
+}
+
+
+/*------------------
+        about
+-------------------*/
+
+.about-wrapper{
+    text-align: center;
+    line-height: 2;
+}
+
+.about-title{
+    margin: 0 0 60px 0;
+}
+
+.about-text{
+    margin: 0 0 40px 0;
+}
+
+.about-ltext{
+    margin: 0 0 80px 0;
+}
+
+.about-img{
+    display:flex;
+    width: 300px;
+    flex-direction: row-reverse;
+    justify-content:start;
+}
+
+
+/*---------------------
+        course         
+------------------------*/
+
+.course-wrapper{
+    text-align: center;
+    line-height: 2;
+}
+
+.course-message{
+    width: 430px;
+    padding: 82px 120px 82px 50px;
+    line-height: 2;
+    text-align: justify;
+    text-align: inter-deograph;
+    background-color: rgba(211, 211, 211,0.2);
+
+}
+
+.course-content{
+    display: flex;
+    justify-content: space-between;
+}
+
+.course-img{
+    display: block;
+    max-width: 600px;
+}
+
+.course-ltext{
+    margin: 0 0 60px 0;
+}
+
+
+/*news*/
+
+.news-wrapper{
+    display:flex;
+    justify-content: center;
+}
+
+.news-contents{
+    margin: 60px 15px 60px 15px;
+    
+}
+
+.news-text{
+    width: 300px;
+    line-height: 2;
+    text-align: justify;
+    text-align: inter-deograph;
+}
+
+.news-date{
+    margin: 30px 0 24px 0;
+}
+
+.btn{
+    background-color: rgb(255, 217, 0);
+    color: white;
+    font-size: 1.8rem;
+    display:block;
+    border-radius: 10px;
+    width: 300px;
+    padding: 22px 0 22px 0;
+    margin:auto;
+    text-align: center;
+    border: 3px solid rgb(51, 51, 51);
+    box-shadow: 0 5px 0 rgba(51, 51, 51, 0.8);
+    transition: 0.3s;
+}
+
+.btn:hover{
+    transform: translateY(10px);
+    box-shadow: 0 0 0 rgba(51, 51, 51, 0.8);
+}
+
+/*-------------------
+        access
+---------------------*/
+
+.access-box{
+    background-color: rgba(211, 211, 211,0.2);
+    padding: 60px 0 30px 0;
+    margin: 60px 0 60px 0;
+}
+
+.access-box>h2{
+    margin-top: 0px;
+}
+
+.access-wrapper{
+    margin: 0 0 60px 0;
+    text-align: center;
+}
+
+.access-info>iframe{
+    margin: 0 0 60px 0;
+}
+
+.access-info>dl{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: [dts]180px [dds]350px ;
+}
+
+.access-info>dl>dt{
+    grid-column:dts;
+    grid-row: auto;
+    padding: 0 0 30px 0;
+}
+
+.access-info>dl>dd{
+    grid-column: dds;
+    grid-row: auto;
+    padding: 0 0 30px 0;
+}
+
+/*-------------------
+        contact
+---------------------*/
+
+.contact-form{
+    display: grid;
+    justify-content: center;
+    grid-template-columns: [labels]240px [controls]400px ;
+    grid-auto-flow: row;
+    grid-gap: none;
+    margin-bottom: 60px;
+}
+
+.contact-form>label{
+    grid-column: labels;
+    grid-row: auto;
+    padding: 15px 64px 0 16px;
+    border: 0.1px solid #bfbfbf;
+}
+
+.contact-form>div{
+    grid-column: controls;
+    grid-row: auto;
+    border: rgba(51, 51, 51, 0.8);
+    border: 0.1px solid #bfbfbf;
+}
+
+label.form-top{
+    border-top: 7px solid #bfbfbf;
+}
+
+div.form-top{
+    border-top: 7px solid #bfbfbf;
+}
+
+.chanse>p{
+    line-height: 2;
+}
+
+.cp_ipselect {
+	overflow: hidden;
+	width: 90%;
+	margin: 2em auto;
+	text-align: center;
+}
+.cp_ipselect select {
+	width: 100%;
+	padding-right: 1em;
+	cursor: pointer;
+	text-indent: 0.01px;
+	text-overflow: ellipsis;
+    border: none;
+	outline: none;
+	background: transparent;
+	background-image: none;
+	box-shadow: none;
+	-webkit-appearance: none;
+	appearance: none;
+}
+.cp_ipselect select::-ms-expand {
+    display: none;
+}
+.cp_ipselect.cp_sl01 {
+	position: relative;
+	border: 1px solid #bbbbbb;
+	border-radius: 2px;
+	background: #ffffff;
+}
+.cp_ipselect.cp_sl01::before {
+	position: absolute;
+	top: 0.8em;
+	right: 0.9em;
+	width: 0;
+	height: 0;
+	padding: 0;
+	content: '';
+	border-left: 6px solid transparent;
+	border-right: 6px solid transparent;
+	border-top: 6px solid #666666;
+	pointer-events: none;
+}
+.cp_ipselect.cp_sl01:after {
+	position: absolute;
+	top: 0;
+	right: 2.5em;
+	bottom: 0;
+	width: 1px;
+	content: '';
+	border-left: 1px solid #bbbbbb;
+}
+.cp_ipselect.cp_sl01 select {
+	padding: 8px 38px 8px 8px;
+	color: #666666;
+}
+
+.contact-title{
+    margin: 0 0 60px 0;
+}
+
+.contact-text{
+    line-height: 2;
+    margin: 0 0 30px 0;
+}
+
+.contact-ltext{
+    line-height: 2;
+    margin: 0 0 70px 0;
+}
+
+input,textarea{
+    height: 36px;
+    width: 360px;
+    margin: 5px 8px 5px 20px;
+    border-radius: 4px;
+    border: none;
+    box-shadow: 0 0 0 1px #ccc inset;
+    appearance: none;
+}
+
+textarea{
+    height: 200px;
+}
+
+input:focus{
+    outline: 0;
+    box-shadow: 0 0 0 2px rgba(121, 215, 252, 0.8) inset;
+}
+
+
+textarea:focus{
+    outline: 0;
+    box-shadow: 0 0 0 2px rgba(121, 215, 252, 0.8) inset;
+}
+
+/*footer*/
+.footer{
+    width: 1200px;
+    margin: 140px 0 0 0;
+    padding: 30px 0 30px 0;
+    text-align: center;
+    color: white;
+    background-color:#707070;
+}
