@@ -11,7 +11,6 @@ const ul = document.getElementById("ul");
 
 form.addEventListener("submit", (event) =>{
     event.preventDefault();
-    // console.log(input.value);
     add();
 });
 
@@ -23,8 +22,10 @@ const add = () => {
     // }
 
     if(todoText.length > 0) {
+        //liタグを作成し、フォームに入力した値を取得する
         const li = document.createElement("li");
         li.innerText = todoText;
+        //liタグにデザインを当てるためにクラスを指定する
         li.classList.add("list-group-item");
         ul.appendChild(li);
         input.value = "";
@@ -39,4 +40,4 @@ const saveData = () => {
         todos.push(list.innerText);
     });
     localStorage.setItem("todos", JSON.stringify(todos));
-}
+};
