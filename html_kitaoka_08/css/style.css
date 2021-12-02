@@ -169,7 +169,11 @@ li{
 }
 
 .news-contents:hover{
-    border: solid 20px papayawhip;
+    transition:  translateY(-20px);
+    border-radius: 0 5%;
+    box-shadow: 0 3px 10px 0 #333;
+    opacity: 0.8;
+    cursor: pointer;
 }
 
 .news-contents>a>span>div>p{
