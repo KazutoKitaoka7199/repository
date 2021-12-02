@@ -169,7 +169,7 @@ li{
 }
 
 .news-contents:hover{
-    transition:  translateY(-20px);
+    transform:  translateY(-20px);
     border-radius: 0 5%;
     box-shadow: 0 3px 10px 0 #333;
     opacity: 0.8;
@@ -178,12 +178,12 @@ li{
 
 .news-contents>a>span>div>p{
     color: #000;
+    font-size: 13px;
 }
 
 .news-text{
-    width: 300px;
+    width: 290px;
     line-height: 2;
-    text-align: justify;
     text-align: inter-deograph;
 }
 
