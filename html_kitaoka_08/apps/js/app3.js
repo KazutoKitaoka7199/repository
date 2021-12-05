@@ -18,8 +18,8 @@ let mouse = {
     y:0
 };
 canvas.addEventListener("mousemove",(e) => {
-    mouse.x = e.pageX;
-    mouse.y = e.pageY;
+    mouse.x = e.pageX -this.offsetLeft;
+    mouse.y = e.pageY - this.offsetTop;
     console.log(mouse);
 },false);
 
