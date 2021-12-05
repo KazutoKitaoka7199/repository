@@ -52,6 +52,16 @@ li{
         header
 ----------------------*/
 
+.box{
+    position: relative;
+}
+
+.box p{
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
 .header-wrapper{
     display: flex;
     justify-content: space-between;
