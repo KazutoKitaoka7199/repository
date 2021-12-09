@@ -14,17 +14,26 @@
 const dai = "大吉"
 const tyu = "中吉"
 const syou = "小吉"
-// let num = 90;
+
 
 const f =() => {
-    if(numRandom >= 80){
+    let numRandom = Math.floor(Math.random()*100+1);
+    console.log(numRandom);
+    if(numRandom >= 70){
+        $("h1").html("大吉");
+        $("h1").css("color","red");
         console.log(dai);
-    }else if(numRandom >= 60){
+    }else if(numRandom >= 50){
+        $("h1").html("中吉");
+        $("h1").css("color","blue");
         console.log(tyu);
     }else{
+        $("h1").html("小吉");
+        $("h1").css("color","orange");
         console.log(syou);
     };
 };
-let numRandom = Math.floor(Math.random()*100+1);
-console.log(numRandom);
-f();
+
+$("#aa").on("click", ()=>{
+    f();    
+});
