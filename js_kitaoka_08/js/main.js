@@ -32,8 +32,8 @@ let Field = new field();
 vcan.width = screen_W;
 vcan.height = screen_H;
 
-can.width = screen_W*2.5;
-can.height = screen_H*2.5;
+can.width = screen_W*3.5;
+can.height = screen_H*3.5;
 
 con.mozimageSmoothingEnabled = false;
 con.msimageSmoothingEnabled = false;
@@ -70,7 +70,7 @@ function draw(){
     vcon.fillText("FRAME:"+frameCount, 10,20);
 
     //仮想画面から実画面へ拡大転送
-    con.drawImage(vcan, 0,0,screen_W,screen_H, 0,0,screen_W*2.5,screen_H*2.5);
+    con.drawImage(vcan, 0,0,screen_W,screen_H, 0,0,screen_W*3.5,screen_H*3.5);
     
 };
 
