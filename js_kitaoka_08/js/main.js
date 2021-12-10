@@ -27,7 +27,7 @@ let keyBord = {
 let field = new Field();
 
 //マリオ
-let Mario = new mario(50,160)
+let mario = new Mario(50,160)
 
 vcan.width = screen_W;
 vcan.height = screen_H;
@@ -43,7 +43,7 @@ con.imageSmoothingEnabled = false;
 //更新処理
 function update(){
     field.update();
-    Mario.update();
+    mario.update();
 };
 
 //マリオご本人描画の関数
@@ -63,7 +63,7 @@ function draw(){
     field.draw();
 
     //マリオご本人描画
-    Mario.draw();
+    mario.draw();
     
     vcon.font="10px sarif";
     vcon.fillStyle="white";

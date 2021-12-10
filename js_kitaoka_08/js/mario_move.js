@@ -10,7 +10,7 @@ const GRAVITY = 4;
 const MAX_SPEED = 32;
 
 
-class mario{
+class Mario{
     constructor(x,y){
         this.x = x<<4;
         this.y = y<<4;

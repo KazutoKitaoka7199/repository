@@ -27,8 +27,8 @@ class Field{
 
     //更新処理
     update(){
-        if((Mario.x>>4) > field.scx+128){
-            field.scx = (Mario.x>>4)-128;
+        if((mario.x>>4) > field.scx+128){
+            field.scx = (mario.x>>4)-128;
         }
     };
 
