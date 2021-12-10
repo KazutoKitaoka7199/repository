@@ -1,4 +1,3 @@
-
 const game_fps = 1000/60;
 const screen_W = 256;
 const screen_H = 224;
@@ -25,7 +24,7 @@ let keyBord = {
     Down:false,
 };
 
-let mario = new mario(100,100)
+let Mario = new mario(100,100)
 
 
 vcan.width = screen_W;
@@ -41,53 +40,7 @@ con.imageSmoothingEnabled = false;
 
 //更新処理
 function update(){
-    
-    
-    
-    //地面に着地する処理
-    if(mario_y>100<<4){
-        if(mario_animation==jumpAnimetion)mario_animation=1;
-        mario_jump = 0;
-        mario_vy = 0;
-        mario_y = 100<<4;
-    };
-
-    //移動処理・アニメーションの指定
-    if(keyBord.Left){
-        if(mario_animation==0)mario_sprite_count=0;
-        if(!mario_jump)mario_animation = 1;
-        if(!mario_jump)mario_direction = 1;
-        if(mario_vx>-32)mario_vx-=1;
-        console.log(mario_vx);
-        if(!mario_jump && mario_vx>8)mario_animation=2;
-    }else if(keyBord.Right){
-        if(mario_animation==0)mario_sprite_count=0;
-        if(!mario_jump)mario_animation = 1;
-        if(!mario_jump)mario_direction = 0;
-        console.log(mario_vx);
-        if(mario_vx<32)mario_vx+=1;
-        if(!mario_jump && mario_vx<-8)mario_animation=2;
-    }else {
-        if(!mario_jump){
-            if(mario_vx>0)mario_vx-=1;
-            if(mario_vx<0)mario_vx+=1;
-            if(!mario_vx)mario_animation = 0;
-        }
-    };
-
-    
-    //停止状態・走らせる・急ブレーキ（スプライトの決定）
-    if(mario_animation == 0)mario_sprite = 0;
-    else if(mario_animation ==1)mario_sprite = 2 + ((mario_sprite_count>>2)%3);
-    if(mario_animation == 2)mario_sprite = 5;
-    if(mario_animation == jumpAnimetion)mario_sprite = 6;
-    
-    //左向きに切り替え
-    if(mario_direction == 1)mario_sprite +=48;
-
-    //マリオが移動する処理（座標移動）
-    mario_x += mario_vx;
-    mario_y += mario_vy;
+    Mario.update();
 };
 
 //マリオご本人描画の関数
@@ -104,7 +57,7 @@ function draw(){
     vcon.fillRect(0,0,screen_W,screen_H);   //fillRect:四角を描画するメソッド
     
     //マリオご本人描画
-    mario.draw();
+    Mario.draw();
     
     vcon.font="24px sarif";
     vcon.fillStyle="white";
