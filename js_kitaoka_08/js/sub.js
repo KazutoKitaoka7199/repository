@@ -36,7 +36,7 @@ let mario_jump = 0;
 
 const GRAVITY = 4;
 
-let mario_animation = 0;
+let anime = 0;
 const jumpAnimetion = 3;
 let mario_sprite = 0;
 let mario_sprite_count = 0;
@@ -62,12 +62,13 @@ function update(){
     //ジャンプ動作の処理
     if(keyBord.Up){
         if(mario_jump == 0){
-            mario_animation = jumpAnimetion;
+            anime = jumpAnimetion;
             mario_jump = 1;
             mario_vy = -64;
         }
         if(mario_jump<15)mario_vy = -(64-mario_jump);
     };
+    //昇竜拳をしないようにする
     if(mario_jump)mario_jump++;
 
     //重力
@@ -75,7 +76,7 @@ function update(){
     console.log(mario_vy);
     //地面に着地する処理
     if(mario_y>100<<4){
-        if(mario_animation==jumpAnimetion)mario_animation=1;
+        if(anime==jumpAnimetion)anime=1;
         mario_jump = 0;
         mario_vy = 0;
         mario_y = 100<<4;
@@ -83,33 +84,33 @@ function update(){
 
     //移動処理・アニメーションの指定
     if(keyBord.Left){
-        if(mario_animation==0)mario_sprite_count=0;
-        if(!mario_jump)mario_animation = 1;
+        if(anime==0)mario_sprite_count=0;
+        if(!mario_jump)anime = 1;
         if(!mario_jump)mario_direction = 1;
         if(mario_vx>-32)mario_vx-=1;
         console.log(mario_vx);
-        if(!mario_jump && mario_vx>8)mario_animation=2;
+        if(!mario_jump && mario_vx>8)anime=2;
     }else if(keyBord.Right){
-        if(mario_animation==0)mario_sprite_count=0;
-        if(!mario_jump)mario_animation = 1;
+        if(anime==0)mario_sprite_count=0;
+        if(!mario_jump)anime = 1;
         if(!mario_jump)mario_direction = 0;
         console.log(mario_vx);
         if(mario_vx<32)mario_vx+=1;
-        if(!mario_jump && mario_vx<-8)mario_animation=2;
+        if(!mario_jump && mario_vx<-8)anime=2;
     }else {
         if(!mario_jump){
             if(mario_vx>0)mario_vx-=1;
             if(mario_vx<0)mario_vx+=1;
-            if(!mario_vx)mario_animation = 0;
+            if(!mario_vx)anime = 0;
         }
     };
 
     
     //停止状態・走らせる・急ブレーキ（スプライトの決定）
-    if(mario_animation == 0)mario_sprite = 0;
-    else if(mario_animation ==1)mario_sprite = 2 + ((mario_sprite_count>>2)%3);
-    if(mario_animation == 2)mario_sprite = 5;
-    if(mario_animation == jumpAnimetion)mario_sprite = 6;
+    if(anime == 0)mario_sprite = 0;
+    else if(anime ==1)mario_sprite = 2 + ((mario_sprite_count>>2)%3);
+    if(anime == 2)mario_sprite = 5;
+    if(anime == jumpAnimetion)mario_sprite = 6;
     
     //左向きに切り替え
     if(mario_direction == 1)mario_sprite +=48;
