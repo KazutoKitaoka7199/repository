@@ -23,11 +23,11 @@ let keyBord = {
     // scr_x:0,
 };
 
-//マリオ
-let Mario = new mario(50,160)
-
 //フィールド
 let field = new Field();
+
+//マリオ
+let Mario = new mario(50,160)
 
 vcan.width = screen_W;
 vcan.height = screen_H;
