@@ -1,6 +1,4 @@
-const game_fps = 1000/60;
-const screen_W = 256;
-const screen_H = 224;
+
 
 let vcan = document.createElement("canvas");
 let vcon = vcan.getContext("2d");
@@ -22,10 +20,14 @@ let keyBord = {
     Right:false,
     Up:false,
     Down:false,
+    scr_x:0,
 };
 
-let Mario = new mario(100,100)
+//マリオ
+let Mario = new mario(50,160)
 
+//フィールド
+let Field = new field();
 
 vcan.width = screen_W;
 vcan.height = screen_H;
@@ -40,6 +42,7 @@ con.imageSmoothingEnabled = false;
 
 //更新処理
 function update(){
+    Field.update();
     Mario.update();
 };
 
@@ -56,12 +59,15 @@ function draw(){
     vcon.fillStyle = "#66AAFF";     //fillStyle:図形の内側を塗りつぶすために使用する色、グラデーション、またはパターンを指定
     vcon.fillRect(0,0,screen_W,screen_H);   //fillRect:四角を描画するメソッド
     
+    //マップ描画
+    Field.draw();
+
     //マリオご本人描画
     Mario.draw();
     
-    vcon.font="24px sarif";
+    vcon.font="10px sarif";
     vcon.fillStyle="white";
-    vcon.fillText("FRAME:"+frameCount, 20,20);
+    vcon.fillText("FRAME:"+frameCount, 10,20);
 
     //仮想画面から実画面へ拡大転送
     con.drawImage(vcan, 0,0,screen_W,screen_H, 0,0,screen_W*2.5,screen_H*2.5);
@@ -108,6 +114,12 @@ document.onkeydown = function(e){
     if(e.key === "z"){
         keyBord.Down = true;
     };
+    if(e.key === "a"){
+        field.scr_x--;
+    }
+    if(e.key === "s"){
+        field.scr_x++;
+    }
 };
 
 //移動を止める処理

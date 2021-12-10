@@ -1,4 +1,6 @@
-//ジャンプ移動
+//
+//マリオの移動
+//
 const ANIME_STAND = 1;
 const ANIME_WALK = 2;
 const ANIME_STOP = 4;
@@ -31,8 +33,8 @@ class mario{
                 this.vy = -64;
             }
             if(this.jump<15)this.vy = -(64-this.jump);
-            console.log(this.vy);
-            console.log(this.y);
+            // console.log(this.vy);
+            // console.log(this.y);
         };
         if(this.jump)this.jump++;
     }
@@ -42,8 +44,8 @@ class mario{
         //最高速まで加速
         if(direction==0 && this.vx< MAX_SPEED)this.vx++;
         if(direction==1 && this.vx>-MAX_SPEED)this.vx--;
-            console.log(this.vx);
-            console.log(direction);
+            // console.log(this.vx);
+            // console.log(direction);
 
         //ジャンプしていないとき
         if(!this.jump){
@@ -121,18 +123,18 @@ class mario{
         //マリオが移動する処理（座標移動）
         this.x += this.vx;
         this.y += this.vy;
-        console.log(this.y);
+        // console.log(this.y);
 
         //重力
         if(this.vy<64)this.vy+=GRAVITY;
-        console.log(this.vy);
+        // console.log(this.vy);
 
         //地面に着地する処理
-        if(this.y>100<<4){
+        if(this.y>160<<4){
             if(this.anime==ANIME_JUMP)this.anime=ANIME_WALK;
             this.jump = 0;
             this.vy = 0;
-            this.y = 100<<4;
+            this.y = 160<<4;
         };
     }
 
