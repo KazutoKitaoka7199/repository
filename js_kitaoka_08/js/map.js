@@ -21,14 +21,14 @@ let fieldData = [
 
 class field{
     constructor(){
-        this.scr_x = 0;
-        this.scr_y = 0;
+        this.scr_x = keyBord.scr_x = 0;
+        this.scr_y = keyBord.scr_y = 0;
     }
 
     //更新処理
     update(){
-        if((mario.x>>4) > field.scr_x+128){
-            field.scr_x = (mario.x>>4)-128;
+        if((mario.x>>4) > this.scr_x+128){
+            keyBord.scr_x = (mario.x>>4)-128;
         }
     }
 

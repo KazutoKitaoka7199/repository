@@ -20,7 +20,7 @@ let keyBord = {
     Right:false,
     Up:false,
     Down:false,
-    scr_x:0,
+    // scr_x:0,
 };
 
 //マリオ
@@ -115,10 +115,12 @@ document.onkeydown = function(e){
         keyBord.Down = true;
     };
     if(e.key === "a"){
-        field.scr_x--;
+        Field.scr_x-=3;
+        // console.log(field.scr_x);
     }
     if(e.key === "s"){
-        field.scr_x++;
+        Field.scr_x+=3;
+        // console.log(field.scr_x);
     }
 };
 
