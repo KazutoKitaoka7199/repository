@@ -27,7 +27,7 @@ let keyBord = {
 let Mario = new mario(50,160)
 
 //フィールド
-let Field = new field();
+let field = new Field();
 
 vcan.width = screen_W;
 vcan.height = screen_H;
@@ -42,7 +42,7 @@ con.imageSmoothingEnabled = false;
 
 //更新処理
 function update(){
-    Field.update();
+    field.update();
     Mario.update();
 };
 
@@ -60,7 +60,7 @@ function draw(){
     vcon.fillRect(0,0,screen_W,screen_H);   //fillRect:四角を描画するメソッド
     
     //マップ描画
-    Field.draw();
+    field.draw();
 
     //マリオご本人描画
     Mario.draw();
@@ -115,12 +115,12 @@ document.onkeydown = function(e){
         keyBord.Down = true;
     };
     if(e.key === "a"){
-        Field.scr_x-=3;
-        // console.log(field.scr_x);
+        field.scx-=3;
+        console.log(field.scx);
     }
     if(e.key === "s"){
-        Field.scr_x+=3;
-        // console.log(field.scr_x);
+        field.scx+=3;
+        console.log(field.scx);
     }
 };
 

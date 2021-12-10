@@ -140,6 +140,8 @@ class mario{
 
     //毎フレームごとの描画処理
     draw(){
-        drawSprite(this.sprite_num, this.x>>4, this.y>>4);
+        let px = (this.x>>4) - field.scx;
+        let py = (this.y>>4) - field.scy;
+        drawSprite(this.sprite_num, px, py);
     }
 }
