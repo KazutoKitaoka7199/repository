@@ -25,8 +25,22 @@ let keyBord = {
     Down:false,
 };
 
-let mario = new mario(100,100)
+//移動座標
+let mario_x = 100<<4; //4ビットシフトする（１６倍）
+let mario_y = 100<<4;
+let mario_vx = 0;
+let mario_vy = 0;
 
+//ジャンプ移動
+let mario_jump = 0;
+
+const GRAVITY = 4;
+
+let mario_animation = 0;
+const jumpAnimetion = 3;
+let mario_sprite = 0;
+let mario_sprite_count = 0;
+let mario_direction = 0;
 
 vcan.width = screen_W;
 vcan.height = screen_H;
@@ -41,9 +55,24 @@ con.imageSmoothingEnabled = false;
 
 //更新処理
 function update(){
-    
-    
-    
+    //アニメーション用のカウンタ
+    mario_sprite_count++;
+    if(Math.abs(mario_vx)==32)mario_sprite_count++;
+
+    //ジャンプ動作の処理
+    if(keyBord.Up){
+        if(mario_jump == 0){
+            mario_animation = jumpAnimetion;
+            mario_jump = 1;
+            mario_vy = -64;
+        }
+        if(mario_jump<15)mario_vy = -(64-mario_jump);
+    };
+    if(mario_jump)mario_jump++;
+
+    //重力
+    if(mario_vy<64)mario_vy+=GRAVITY;
+    console.log(mario_vy);
     //地面に着地する処理
     if(mario_y>100<<4){
         if(mario_animation==jumpAnimetion)mario_animation=1;
@@ -104,7 +133,7 @@ function draw(){
     vcon.fillRect(0,0,screen_W,screen_H);   //fillRect:四角を描画するメソッド
     
     //マリオご本人描画
-    mario.draw();
+    drawSprite(mario_sprite, mario_x>>4, mario_y>>4);
     
     vcon.font="24px sarif";
     vcon.fillStyle="white";
