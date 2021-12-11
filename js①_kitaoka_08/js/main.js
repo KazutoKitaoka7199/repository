@@ -12,7 +12,7 @@ let frameCount = 0;
 let startTime = 0;
 
 let chImage = new Image();
-chImage.src = "../js_kitaoka_08/sprite.png";
+chImage.src = "../js①_kitaoka_08/sprite.png";
 
 //キーボード
 let keyBord = {
