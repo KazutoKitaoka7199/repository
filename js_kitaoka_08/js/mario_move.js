@@ -23,6 +23,23 @@ class Mario{
         this.jump = 0;
     }
 
+    //床の判定
+    checkFloor(){
+
+        if(this.vy<=0)return;
+
+        let lx = (this.x>>4);
+        let ly = ((this.y+this.vy)>>4);
+        if(field.isBlock(lx+1,ly+31)||
+            field.isBlock(lx+14,ly+31))
+            {
+            if(this.anime==ANIME_JUMP)this.anime=ANIME_WALK;
+                this.jump = 0;
+                this.vy = 0;
+                this.y = ((((ly+31)>>4)<<4)-32)<<4;
+            }
+    }
+
     //ジャンプ処理
     updateJump(){
         //ジャンプ動作の処理
@@ -120,6 +137,9 @@ class Mario{
         this.updateWalk();
         this.updateAnime();
 
+        //床のチェック
+        this.checkFloor();
+
         //マリオが移動する処理（座標移動）
         this.x += this.vx;
         this.y += this.vy;
@@ -129,13 +149,15 @@ class Mario{
         if(this.vy<64)this.vy+=GRAVITY;
         // console.log(this.vy);
 
+
+        /*
         //地面に着地する処理
         if(this.y>160<<4){
             if(this.anime==ANIME_JUMP)this.anime=ANIME_WALK;
             this.jump = 0;
             this.vy = 0;
             this.y = 160<<4;
-        };
+        };*/
     }
 
     //毎フレームごとの描画処理

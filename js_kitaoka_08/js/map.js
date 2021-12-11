@@ -25,6 +25,12 @@ class Field{
         this.scy = 0;
     }
 
+    isBlock(x,y){
+        let block = fieldData[(y>>4)*FIELD_SIZE_W+(x>>4)];　//>>4は右に4ビットシフト(1/16)
+        if(block==-1)return false;
+        return true;
+    } 
+
     //更新処理
     update(){
         if((mario.x>>4) > field.scx+128){
