@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>お絵描きアプリその②</title>
+</head>
+<body> 
+    <h1>Koopa Canvas</h1>
+    <div id="can_wrapper">
+        <canvas id="can"></canvas>
+    </div>
+    <img id="image" src="" alt="">
+    <div class="box">
+        <label for="input">
+            <input type="file" name="input" id="input">ファイルを選択
+        </label>
+        <label for="input">
+            <input type="file" name="input" id="input">保存
+        </label>
+        <label for="clear">
+            <input type="button" value="clear" id="clear">
+        </label>
+    </div>
+    
+    <div id="can_wrapper">
+        <canvas id="drawCanvas"></canvas>
+    </div>
+    <link rel="stylesheet" href="css/style.css">
+
+    <script src="js/main.js"></script>
+    <script src="js/drawCanvas.js"></script>
+</body>
+</html>
