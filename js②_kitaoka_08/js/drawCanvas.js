@@ -4,9 +4,6 @@ const drawCanvas_H = 384;
 let drawCan = document.getElementById("drawCanvas");
 let drawCon = drawCan.getContext("2d");
 
-let stroke_style = document.getElementById("color");
-console.log(stroke_style.value);
-
 drawCan.width = drawCanvas_W;
 drawCan.height = drawCanvas_H;
 
@@ -64,11 +61,21 @@ drawCan.addEventListener("mouseup", ()=> {
     drawCan.removeEventListener("mousemove",onPaint,false);
 });
 
+function clickBtn1(){
+    let stroke_style = document.getElementById("colorBox");
+    selectColor = stroke_style.value;
+}
+
+function clickBtn2() {
+    const number = document.getElementById("number");
+    selectWidth = number.value;
+}
+
 const onPaint = () => {
     drawCon.lineTo(mouse.x,mouse.y);
     drawCon.stroke();
-    drawCon.strokeStyle = "#222";
-    drawCon.lineWidth = 5;
+    drawCon.strokeStyle = selectColor;
+    drawCon.lineWidth = selectWidth;
 }
 
 

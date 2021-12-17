@@ -22,9 +22,17 @@
         <label for="clear">
             <input type="button" value="clear" id="clear">
         </label>
+    </div>
+    <div class="box">
         <label for="color">
-            カラーを選択<input type="color" id="color">
+            カラーを選択<input type="color" id="colorBox" onclick="clickBtn1()"/>
         </label>
+        <label for="input">
+            太さ<input type="number" id="number" value="5" max="10" onclick="clickBtn2()"/>
+        </label>
+        <!-- <label for="input">
+            <input type="button" value="太さ" onclick="clickBtn()" />
+        </label> -->
     </div>
     
     <div id="can_wrapper">
