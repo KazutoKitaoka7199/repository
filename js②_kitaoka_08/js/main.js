@@ -25,6 +25,13 @@ con.imageSmoothingEnabled = false;
 let frameCount = 0;
 let startTime = 0;
 
+//クッパの座標
+let koopaX = 0;
+let koopaY = 20;
+
+//クッパを繰り返す
+let functionCalls = 0;
+
 //新しいオブジェクトを作成
 let chImage = new Image();
 chImage.src = "../js②_kitaoka_08/sprite.png";
@@ -33,7 +40,7 @@ chImage.src = "../js②_kitaoka_08/sprite.png";
 function draw(){
     vcon.fillStyle = "#66AAFF";
     vcon.fillRect(0,0,screen_W,screen_H);
-    vcon.drawImage(chImage,0,192,32,32,0,10,32,32);
+    vcon.drawImage(chImage,0,192,32,32,koopaX,koopaY,32,32);
     //デバック情報
     // vcon.font="10px sarif";
     // vcon.fillStyle="white";
@@ -54,7 +61,31 @@ function mainLoop(){
     let nowFrame = (nowTime-startTime)/GAME_FPS;
     if(nowFrame > frameCount){
         frameCount++;
+
+        function koopaMove(){
+            let moveSum = 0;
+            let functionLoops = Math.floor(functionCalls++/352);
+            // console.log(functionLoops);
+            for(let i = koopaX ;i<=352; i++){
+                moveSum = 352*functionLoops;
+                koopaX = nowFrame-moveSum;
+                // console.log(koopaX);
+                // console.log(moveSum);
+            }
+        }
+        koopaMove();
+        
+        function koopaLoop(){
+            if(koopaX>352){
+                koopaMove();
+            }
+        }
+        koopaLoop();
+
     }
     draw();
     requestAnimationFrame(mainLoop);
 }
+
+
+

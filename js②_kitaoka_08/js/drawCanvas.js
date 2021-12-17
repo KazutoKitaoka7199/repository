@@ -78,6 +78,8 @@ const onPaint = () => {
     drawCon.lineWidth = selectWidth;
 }
 
+// //描画内容を画像で保存
+// const dataURI = drawCan.toDataURL() ;
 
 // 描画クリア
 document.getElementById("clear").addEventListener("click",function () {
@@ -92,11 +94,10 @@ document.getElementById("clear").addEventListener("click",function () {
     };
 });
 
-
+//その他やりたかったこと
 //ローカルストレージ内のデータを削除する。
-//キャンバスを画像として保存する
-//キー名は保存用の名前にして、画像をアップロードするときとは分ける
-//キー名をアップロード時と同じに変換することで、キャンバスにアップロードできるようにする
+//ローカルストレージに画像を沢山保存しておいて、その中から作業の続きをしたい画像を選択する
+//画像のプレビューを見ながら、保存している画像を選択できる
 //pdfをアップロードできるようにする
 
 
