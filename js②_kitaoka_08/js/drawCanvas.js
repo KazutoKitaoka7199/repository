@@ -4,33 +4,31 @@ const drawCanvas_H = 384;
 let drawCan = document.getElementById("drawCanvas");
 let drawCon = drawCan.getContext("2d");
 
+let stroke_style = document.getElementById("color");
+console.log(stroke_style.value);
+
 drawCan.width = drawCanvas_W;
 drawCan.height = drawCanvas_H;
 
-drawCon.fillStyle = "white";
-drawCon.fillRect(0,0,drawCanvas_W,drawCanvas_H);
+function drawCanvas(){
 
-document.getElementById("input").addEventListener("change",function(){
-    const reader = new FileReader();
-    reader.addEventListener("load", function(){
-        // console.log(reader.result);
-        localStorage.setItem("recent-image",reader.result);
+    drawCon.fillStyle = "white";
+    drawCon.fillRect(0,0,drawCanvas_W,drawCanvas_H);
+
+    document.getElementById("input").addEventListener("change",function(){
+        const reader = new FileReader();
+        reader.addEventListener("load", function(){
+            // console.log(reader.result);
+            localStorage.setItem("recent-image",reader.result);
+        });
+        reader.readAsDataURL(this.files[0]); 
     });
-    reader.readAsDataURL(this.files[0]);
+}
+drawCanvas();
     
-});
-// document.addEventListener("DOMContentLoaded", function(){
-//     const recentImagedataURL = localStorage.getItem("recent-image");
-//     // console.log(recentImagedataURL);
-//     if(recentImagedataURL){
-//         document.getElementById("image").setAttribute("src",recentImagedataURL);
-//     }
-// });
-
-// 画像をcanvasに張り付け
 let pasteCan = document.getElementById("drawCanvas");
 let pasteCon = pasteCan.getContext("2d");
-      
+// 画像をcanvasに張り付け
 // 画像読み込み
 const chara = new Image();
 document.addEventListener("DOMContentLoaded", function(){
@@ -43,22 +41,15 @@ document.addEventListener("DOMContentLoaded", function(){
     };
 });
 
-// context.beginPath();
-// context.moveTo(500,500);
-
-// context.lineTo(100,100);
-// context.strokeStyle = "#222";
-// context.lineWidth = 5;
-// context.stroke();
-
 let mouse = {
     x:0,
     y:0
 };
 
 drawCan.addEventListener("mousemove",(e) => {
-    mouse.x = e.pageX;
-    mouse.y = e.pageY - 80;
+
+    mouse.x = e.offsetX;
+    mouse.y = e.offsetY;
     // console.log(mouse);
 },false);
 
@@ -80,15 +71,20 @@ const onPaint = () => {
     drawCon.lineWidth = 5;
 }
 
+
 // 描画クリア
 document.getElementById("clear").addEventListener("click",function () {
     drawCon.clearRect(0, 0, drawCanvas_W, drawCanvas_H);
-    reset();
+    drawCanvas();
+    const recentImagedataURL = localStorage.getItem("recent-image");
+    if(recentImagedataURL){
+        chara.src = recentImagedataURL;  // 画像のURLを指定
+        chara.onload = function(){
+        pasteCon.drawImage(chara, 0, 0);
+        }
+    };
 });
 
-function reset(){
-drawCon.fillRect(0,0,drawCanvas_W,drawCanvas_H);
-};
 
 //ローカルストレージ内のデータを削除する。
 //キャンバスを画像として保存する
