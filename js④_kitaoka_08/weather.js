@@ -1,4 +1,4 @@
-const YOUR_ACCESS_KEY = "iWsuU79G1a04z9F0EYxuaGDUENuveGcg3nIXcAZY_jU";
+const YOUR_ACCESS_KEY = "";
 const endpoint = `https://api.unsplash.com/photos/random?client_id=${YOUR_ACCESS_KEY}`;
 
 const imageElement = document.querySelector("#unsplashImage");
@@ -21,7 +21,7 @@ fetch(endpoint)
 
 //openweatherAPIのjsonデータを取得・表示する処理
 let weather = {
-    "API_KEY": "7fdddc19aef6824dd784a69c3e714777",
+    "API_KEY": "",
     fetchweather: function(city){
         fetch("https://api.openweathermap.org/data/2.5/weather?q="
             + city 
