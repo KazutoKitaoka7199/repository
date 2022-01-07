@@ -49,6 +49,7 @@ button:hover{
     background-color: #7c7c7c2b;
     color: white;
     font-size: 120%;
+    width: calc(100% - 70px);
 }
 
 .search-bar:hover{
