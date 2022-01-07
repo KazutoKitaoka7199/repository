@@ -1,9 +1,11 @@
-let YOUR_ACCESS_KEY = "iWsuU79G1a04z9F0EYxuaGDUENuveGcg3nIXcAZY_jU";
-let endpoint = `https://api.unsplash.com/photos/random/?client_id=${YOUR_ACCESS_KEY}`;
+const YOUR_ACCESS_KEY = "iWsuU79G1a04z9F0EYxuaGDUENuveGcg3nIXcAZY_jU";
+const endpoint = `https://api.unsplash.com/photos/random?client_id=${YOUR_ACCESS_KEY}`;
 
-let imageElement = document.querySelector("#unsplashImage");
-let imageLink = document.querySelector("#imageLink");
+const imageElement = document.querySelector("#unsplashImage");
+const imageLink = document.querySelector("#imageLink");
+const input = document.querySelector(".search-bar");
 
+//unsplashAPIのjsonデータを取得・表示する処理
 fetch(endpoint)
     .then(function(response){
         return response.json();
@@ -18,6 +20,7 @@ fetch(endpoint)
         console.log("Error:" + error);
     });
 
+//openweatherAPIのjsonデータを取得・表示する処理
 let weather = {
     "API_KEY": "7fdddc19aef6824dd784a69c3e714777",
     fetchweather: function(city){
@@ -34,7 +37,7 @@ let weather = {
                 const { icon, description } = jsonData.weather[0];
                 const { temp, humidity } = jsonData.main;
                 const { speed } = jsonData.wind;
-                console.log(name,icon,description,temp,humidity,speed);
+                // console.log(name,icon,description,temp,humidity,speed);
                 document.querySelector(".city").innerText = "Weather in " + name;
                 document.querySelector(".icon").src = "https://openweathermap.org/img/wn/" + icon + ".png";
                 document.querySelector(".description").innerText = description;
@@ -48,14 +51,24 @@ let weather = {
         this.fetchweather(document.querySelector(".search-bar").value);
     }
 };
+
+//検索ボタンをクリックすると、検索バーに入力した都市の天気が表示される処理
 document.querySelector(".search button").addEventListener("click", function(){
     weather.search();
+    aftersearch();
+    
 })
-
+//検索バーに入力後Enterキーを押すと入力した都市の天気が表示される処理
 document.querySelector(".search-bar").addEventListener("keyup", function(event){
     if(event.key == "Enter"){
         weather.search();
+        aftersearch();
     }
 })
 
+function aftersearch(){
+    input.value = "";
+}
+
+//デフォルトの都市を表示
 weather.fetchweather("Tokyo");
