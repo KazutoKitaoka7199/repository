@@ -67,10 +67,6 @@ document.querySelector(".search-bar").addEventListener("keyup", function(event){
 
 function aftersearch(){
     const input = document.querySelector(".search-bar");
-    const li = document.createElement("li");
-    li.innerText = input.value;
-    li.classList.add("li");
-    ul.appendChild(li);
     input.value = "";
 }
 
