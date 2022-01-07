@@ -3,7 +3,6 @@ const endpoint = `https://api.unsplash.com/photos/random?client_id=${YOUR_ACCESS
 
 const imageElement = document.querySelector("#unsplashImage");
 const imageLink = document.querySelector("#imageLink");
-const input = document.querySelector(".search-bar");
 
 //unsplashAPIのjsonデータを取得・表示する処理
 fetch(endpoint)
@@ -67,6 +66,11 @@ document.querySelector(".search-bar").addEventListener("keyup", function(event){
 })
 
 function aftersearch(){
+    const input = document.querySelector(".search-bar");
+    const li = document.createElement("li");
+    li.innerText = input.value;
+    li.classList.add("li");
+    ul.appendChild(li);
     input.value = "";
 }
 
