@@ -1,0 +1,12 @@
+li{
+    position: absolute;
+    background-color: #000000d0;
+    text-align: center;
+    list-style: none;
+    color: white;
+    padding: 0.5em;
+    border-radius: 2em;
+    width: 100%;
+    max-width: 200px;
+    margin: 0.5em;
+}
