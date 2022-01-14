@@ -10,7 +10,7 @@ form.addEventListener("submit", (event) => {
 
 const add = (todo) => {
     let todoText = input.value;
-
+json
     if(todo){
         todoText = todo.text;
     }

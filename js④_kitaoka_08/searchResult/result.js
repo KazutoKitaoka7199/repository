@@ -18,9 +18,3 @@ fetch(endpoint)
     .catch(function(error){
         console.log("Error:" + error);
     });
-
-    const input = document.querySelector(".search-bar");
-    const li = document.createElement("li");
-    li.innerText = input.value;
-    li.classList.add("li");
-    ul.appendChild(li);

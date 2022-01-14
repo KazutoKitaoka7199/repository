@@ -72,3 +72,19 @@ function aftersearch(){
 
 //デフォルトの都市を表示
 weather.fetchweather("Tokyo");
+
+const results = JSON.parse(localStorage.getItem("results"));
+
+if(results){
+    results.forEach(result => {
+        add(result);        
+    });
+}
+
+function add(){
+    const input = document.querySelector(".search-bar");
+    const li = document.createElement("li");
+    li.innerText = input.value;
+    li.classList.add("li");
+    ul.appendChild(li);
+}
