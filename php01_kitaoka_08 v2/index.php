@@ -25,6 +25,36 @@ $stmt->execute();
 $records = $stmt->fetchAll();
 
 ?>
+<?php 
+
+$con = mysqli_connect("localhost","root","root","phpkadai1v2");
+  if($con){
+;
+  }
+
+
+?>
+
+<?php 
+
+// 時間から秒へ変換(00:00:00→00000秒)
+function hour_to_sec(string $str): int{
+    $t = explode(":", $str); //配列（$t[0]（時）、$t[1]（分）、$t[2]（秒））にする
+    $h = (int)$t[0];
+    if (isset($t[1])) { //分の部分に値が入っているか確認
+        $m = (int)$t[1];
+    } else {
+        $m = 0;
+    }
+    if (isset($t[2])) { //秒の部分に値が入っているか確認
+        $s = (int)$t[2];
+    } else {
+        $s = 0;
+    }
+    return ($h * 60 * 60) + ($m * 60) + $s;
+}
+
+?>
 <!DOCTYPE html>
 <html lang="ja">
 <head>
@@ -34,11 +64,40 @@ $records = $stmt->fetchAll();
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
   <link rel="stylesheet" href="./assets/css/style.css">
   <title>学習記録CRUD</title>
+  <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load('current', {'packages':['corechart']});
+      google.charts.setOnLoadCallback(drawChart);
+
+      function drawChart() {
+
+        var data = google.visualization.arrayToDataTable([
+            ['Title', 'Time per Day'],
+
+            <?php  
+                $sql = "SELECT * FROM records";
+                $fire = mysqli_query($con,$sql);
+                while ($result = mysqli_fetch_assoc($fire)) {
+                    echo"['".$result['title']."',".hour_to_sec($result['time'])."],";
+                }
+            ?>
+            
+        ]);
+
+        var options = {
+        title: '各項目の学習時間占率'
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
+
+        chart.draw(data, options);
+      }
+  </script>
 </head>
 <body>
 
   <div class="container">
-    <header class="mb-5">
+    <header class="mb-1">
       <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <a class="navbar-brand" href="index.php">学習記録CRUD</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
@@ -54,9 +113,9 @@ $records = $stmt->fetchAll();
       </nav>
     </header>
 
+    <div id="piechart" style="width: 400px; height: 150px;"></div>
     <div class="row">
       <div class="col-12">
-
         <div class="table-responsive">
           <table class="table table-fixed">
             <thead class="thead-dark">
@@ -93,7 +152,6 @@ $records = $stmt->fetchAll();
         </div>
       </div>
     </div>
-
   </div>
 
 
