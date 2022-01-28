@@ -1,5 +1,5 @@
 <?php
-
+session_start();
 // 1. loginpage.php画面で入力された値の取得→POST
 // 2. PHPからMySQLへ接続→PDOクラスを使用
 // 3. SQL文を作成して、画面で入力された値をloginテーブルから取得
